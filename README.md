@@ -24,7 +24,7 @@ Add [Bmob.js](https://cdn.jsdelivr.net/gh/bmob/hydrogen-js-sdk@2.2.3/dist/) and 
 
 ```
 <script src='https://cdn.jsdelivr.net/gh/bmob/hydrogen-js-sdk@2.2.3/dist/Bmob-2.2.3.min.js'></script>
-<script src='https://cdn.jsdelivr.net/gh/zpfz/ViLikeJS@0.1.0/dist/ViLike-0.1.0.min.js'></script>
+<script src='https://cdn.jsdelivr.net/gh/zpfz/ViLikeJS@0.1.0-beta/dist/ViLike-0.1.0-beta.min.js'></script>
 ```
 
 ViLikeJS is available via npm.
