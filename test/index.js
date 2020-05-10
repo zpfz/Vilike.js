@@ -106,5 +106,9 @@
     });
   };
 
+  if (typeof window !== 'undefined') {
+    window.ViLike = ViLike;
+  }
+
   return ViLike;
 });
