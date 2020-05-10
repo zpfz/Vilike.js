@@ -1,4 +1,4 @@
-(function(root, factory) {
+;(function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     define(factory);
   } else if (typeof exports === 'object') {
@@ -38,7 +38,7 @@
     Bmob.initialize(Settings.secretKey, Settings.safeKey);
   };
 
-  // Get View & Like
+  // Get Visit & Like
   ViLike.get = function(skey, callback) {
     var _visit = localStorage.getItem(skey + '-visit');
     var _like = localStorage.getItem(skey + '-like');
@@ -60,7 +60,7 @@
               localStorage.setItem(skey + '-visit', 1);
             })
             .catch(() => {
-              console.error("Can't read and write data normally.");
+              console.error("Can\'t read and write data normally.");
             });
           callback(res[0][Settings.visit] + 1, res[0][Settings.like], islike);
         } else {
@@ -76,7 +76,7 @@
             localStorage.setItem(skey + '-visit', 1);
           })
           .catch(() => {
-            console.error("Can't read and write data normally.");
+            console.error("Can\'t read and write data normally.");
           });
         callback(1);
       }
@@ -97,7 +97,7 @@
             localStorage.setItem(skey + '-like', 1);
           })
           .catch(() => {
-            console.error("Can't  write data normally.");
+            console.error("Can\'t  write data normally.");
           });
         callback(res[0][Settings.like] + 1);
       } else {
