@@ -1,4 +1,4 @@
-/*!
+/**
  * ViLike.js v0.1.0
  * (c) 2020 Feng L.H.
  * Released under the MIT License.

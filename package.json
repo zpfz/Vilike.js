@@ -3,18 +3,18 @@
   "version": "0.1.0",
   "author": "Feng L.H.",
   "description": "A lightweight visit & like count javascript plugin.",
-  "main": "./dist/ViLike-0.1.0-beta.3.min.js",
+  "main": "./dist/ViLike.min.js",
   "scripts": {
     "dev": "gulp",
     "build": "gulp build"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/zpfz/ViLikeJS.git"
+    "url": "https://github.com/zpfz/ViLike.js.git"
   },
-  "homepage": "https://vilike.seeyoz.cn",
+  "homepage": "https://vilike.vercel.app",
   "bugs": {
-    "url": "https://github.com/zpfz/ViLikeJS/issues"
+    "url": "https://github.com/zpfz/ViLike.js/issues"
   },
   "keywords": [
     "visit",

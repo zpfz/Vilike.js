@@ -32,13 +32,13 @@ gulp.task('jsCompress', async () => {
         presets: ['es2015']
       })
     )
-    .pipe(rename('ViLike-' + version + '.js'))
+    .pipe(rename('ViLike.js'))
     .pipe(gulp.dest('./dist/'))
     .pipe(uglify())
     .on('error', function(err) {
       gutil.log(gutil.colors.red('[Error]'), err.toString());
     })
-    .pipe(rename('ViLike-' + version + '.min.js'))
+    .pipe(rename({ suffix: '.min' }))
     .pipe(gulp.dest('./dist/'));
 });
 
