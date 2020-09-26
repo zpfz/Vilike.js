@@ -1,22 +1,16 @@
-/**
- * ViLike.js v0.1.0
+/*!
+ * ViLike.js v0.1.1
  * (c) 2020 Feng L.H.
  * Released under the MIT License.
  */
-;(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    define(factory);
-  } else if (typeof exports === 'object') {
-    module.exports = factory();
-  } else {
-    root.ViLike = factory();
-  }
-})(this, function() {
-  'use strict';
-
+;(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
+  typeof define === 'function' && define.amd ? define(factory) :
+  (global = global || self, global.ViLike = factory());
+}(this, function () { 'use strict';
   var ViLike = {};
 
-  ViLike.version = '0.1.0';
+  ViLike.version = '0.1.1';
 
   var Settings = {
     secretKey: '',
@@ -111,9 +105,5 @@
     });
   };
 
-  if (typeof window !== 'undefined') {
-    window.ViLike = ViLike;
-  }
-
   return ViLike;
-});
+}));
