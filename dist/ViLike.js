@@ -2,25 +2,19 @@
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-/**
- * ViLike.js v0.1.0
+/*!
+ * ViLike.js v0.1.1
  * (c) 2020 Feng L.H.
  * Released under the MIT License.
  */
-;(function (root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    define(factory);
-  } else if ((typeof exports === 'undefined' ? 'undefined' : _typeof(exports)) === 'object') {
-    module.exports = factory();
-  } else {
-    root.ViLike = factory();
-  }
+;(function (global, factory) {
+  (typeof exports === 'undefined' ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' ? module.exports = factory() : typeof define === 'function' && define.amd ? define(factory) : (global = global || self, global.ViLike = factory());
 })(undefined, function () {
   'use strict';
 
   var ViLike = {};
 
-  ViLike.version = '0.1.0';
+  ViLike.version = '0.1.1';
 
   var Settings = {
     secretKey: '',
@@ -104,10 +98,6 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
       }
     });
   };
-
-  if (typeof window !== 'undefined') {
-    window.ViLike = ViLike;
-  }
 
   return ViLike;
 });
