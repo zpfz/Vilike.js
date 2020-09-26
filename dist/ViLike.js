@@ -3,7 +3,7 @@
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 /*!
- * ViLike.js v0.1.1
+ * ViLike.js v0.1.2
  * (c) 2020 Feng L.H.
  * Released under the MIT License.
  */
@@ -14,7 +14,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
   var ViLike = {};
 
-  ViLike.version = '0.1.1';
+  ViLike.version = '0.1.2';
 
   var Settings = {
     secretKey: '',
@@ -98,6 +98,10 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
       }
     });
   };
+
+  if (typeof window !== 'undefined') {
+    window.ViLike = ViLike;
+  }
 
   return ViLike;
 });

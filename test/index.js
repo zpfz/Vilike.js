@@ -1,5 +1,5 @@
 /*!
- * ViLike.js v0.1.1
+ * ViLike.js v0.1.2
  * (c) 2020 Feng L.H.
  * Released under the MIT License.
  */
@@ -10,7 +10,7 @@
 }(this, function () { 'use strict';
   var ViLike = {};
 
-  ViLike.version = '0.1.1';
+  ViLike.version = '0.1.2';
 
   var Settings = {
     secretKey: '',
@@ -104,6 +104,10 @@
       }
     });
   };
+
+  if (typeof window !== 'undefined') {
+    window.ViLike = ViLike;
+  }
 
   return ViLike;
 }));
