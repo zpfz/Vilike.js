@@ -1,22 +1,19 @@
-'use strict';
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
 /*
  * Vilike.js
  * (c) 2020 Feng L.H.
  * Released under the MIT License.
  */
 ;(function (global, factory) {
-  (typeof exports === 'undefined' ? 'undefined' : _typeof(exports)) === 'object' && typeof module !== 'undefined' ? module.exports = factory() : typeof define === 'function' && define.amd ? define(factory) : (global = global || self, global.Vilike = factory());
-})(undefined, function () {
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
+  typeof define === 'function' && define.amd ? define(factory) :
+  (global = global || self, global.Vilike = factory());
+})(this, function () {
   'use strict';
+  const Vilike = {};
 
-  var Vilike = {};
+  Vilike.version = '0.2.1';
 
-  Vilike.version = '0.2.0';
-
-  var BASE_API_PATH = 'https://api.countapi.xyz';
+  const BASE_API_PATH = 'https://api.countapi.xyz';
 
   /**
    * @description: Execute views/likes by pkey/skey
@@ -27,36 +24,47 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
    */
   Vilike.exec = function (pkey, skey, mode) {
     return new Promise(function (resolve, reject) {
-      if (pkey === undefined || pkey === '' || skey === undefined || skey === '') {
+      if (
+        pkey === undefined ||
+        pkey === '' ||
+        skey === undefined ||
+        skey === ''
+      ) {
         reject('pkey and skey must be set.');
         return;
       }
-      switch (mode) {
+      switch (mode){
         case 0:
-          fetchJson(BASE_API_PATH + '/hit/' + pkey + '/' + skey).then(function (res) {
+          fetchJson(`${BASE_API_PATH}/hit/${pkey}/${skey}`)
+          .then((res) => {
             resolve(res);
-          }).catch(function (err) {
+          })
+          .catch((err) => {
             reject(err);
-          });
+          });  
           break;
         case 1:
-          var keyVal = localStorage.getItem(pkey);
-          var newRes = {};
-          if (keyVal === null) {
+          const keyVal = localStorage.getItem(pkey);
+          let newRes = {};
+          if (keyVal === null){
             localStorage.setItem(pkey, skey);
-            fetchJson(BASE_API_PATH + '/hit/' + pkey + '/' + skey).then(function (res) {
-              Object.assign(newRes, res, { isHit: true });
+            fetchJson(`${BASE_API_PATH}/hit/${pkey}/${skey}`)
+            .then((res) => {
+              Object.assign(newRes,res,{isHit:true});
               resolve(newRes);
-            }).catch(function (err) {
+            })
+            .catch((err) => {
               reject(err);
-            });
-          } else {
-            fetchJson(BASE_API_PATH + '/get/' + pkey + '/' + skey).then(function (res) {
-              Object.assign(newRes, res, { isHit: true });
+            });  
+          }else{
+            fetchJson(`${BASE_API_PATH}/get/${pkey}/${skey}`)
+            .then((res) => {
+              Object.assign(newRes,res,{isHit:true});
               resolve(newRes);
-            }).catch(function (err) {
+            })
+            .catch((err) => {
               reject(err);
-            });
+            }); 
           }
           break;
         default:
@@ -76,7 +84,12 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
    */
   Vilike.create = function (pkey, skey, value, ctrl, upperbound) {
     return new Promise(function (resolve, reject) {
-      if (pkey === undefined || pkey === '' || skey === undefined || skey === '') {
+      if (
+        pkey === undefined ||
+        pkey === '' ||
+        skey === undefined ||
+        skey === ''
+      ) {
         reject('pkey and skey must be set.');
         return;
       }
@@ -84,11 +97,15 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
       ctrl = ctrl === undefined || ctrl === '' ? 0 : ctrl;
       upperbound = upperbound === undefined || upperbound === '' ? 1 : upperbound;
 
-      fetchJson(BASE_API_PATH + '/create?namespace=' + pkey + '&key=' + skey + '&value=' + value + '&enable_reset=' + ctrl + '&update_upperbound=' + upperbound + '&update_lowerbound=0').then(function (res) {
-        resolve(res);
-      }).catch(function (err) {
-        reject(err);
-      });
+      fetchJson(
+        `${BASE_API_PATH}/create?namespace=${pkey}&key=${skey}&value=${value}&enable_reset=${ctrl}&update_upperbound=${upperbound}&update_lowerbound=0`
+      )
+        .then((res) => {
+          resolve(res);
+        })
+        .catch((err) => {
+          reject(err);
+        });
     });
   };
 
@@ -102,7 +119,12 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
    */
   Vilike.update = function (pkey, skey, value, type) {
     return new Promise(function (resolve, reject) {
-      if (pkey === undefined || pkey === '' || skey === undefined || skey === '') {
+      if (
+        pkey === undefined ||
+        pkey === '' ||
+        skey === undefined ||
+        skey === ''
+      ) {
         reject('pkey and skey must be set.');
         return;
       }
@@ -111,20 +133,24 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         case 0:
           value = value === undefined || value === '' ? 0 : value;
 
-          fetchJson(BASE_API_PATH + '/set/' + pkey + '/' + skey + '?value=' + value).then(function (res) {
-            resolve(res);
-          }).catch(function (err) {
-            reject(err);
-          });
+          fetchJson(`${BASE_API_PATH}/set/${pkey}/${skey}?value=${value}`)
+            .then((res) => {
+              resolve(res);
+            })
+            .catch((err) => {
+              reject(err);
+            });
           break;
         case 1:
           value = value === undefined || value === '' ? 1 : value;
 
-          fetchJson(BASE_API_PATH + '/update/' + pkey + '/' + skey + '?amount=' + value).then(function (res) {
-            resolve(res);
-          }).catch(function (err) {
-            reject(err);
-          });
+          fetchJson(`${BASE_API_PATH}/update/${pkey}/${skey}?amount=${value}`)
+            .then((res) => {
+              resolve(res);
+            })
+            .catch((err) => {
+              reject(err);
+            });
 
           break;
         default:
@@ -141,15 +167,22 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
    */
   Vilike.info = function (pkey, skey) {
     return new Promise(function (resolve, reject) {
-      if (pkey === undefined || pkey === '' || skey === undefined || skey === '') {
+      if (
+        pkey === undefined ||
+        pkey === '' ||
+        skey === undefined ||
+        skey === ''
+      ) {
         reject('pkey and skey must be set.');
         return;
       }
-      fetchJson(BASE_API_PATH + '/info/' + pkey + '/' + skey).then(function (res) {
-        resolve(res);
-      }).catch(function (err) {
-        reject(err);
-      });
+      fetchJson(`${BASE_API_PATH}/info/${pkey}/${skey}`)
+        .then((res) => {
+          resolve(res);
+        })
+        .catch((err) => {
+          reject(err);
+        });
     });
   };
 
@@ -159,11 +192,11 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
    * @return {Object}
    */
   function fetchJson(url) {
-    return new Promise(function (resolve) {
-      var xhr = new XMLHttpRequest();
+    return new Promise((resolve) => {
+      let xhr = new XMLHttpRequest();
       xhr.responseType = 'json';
 
-      xhr.onload = function () {
+      xhr.onload = () => {
         switch (xhr.status) {
           case 200:
             resolve(xhr.response);

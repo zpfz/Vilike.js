@@ -157,16 +157,6 @@ Vilike.info('github.zpfz','vilike').then((result) => {
 ```
 **NOTE:** The fields above are in order: creation time, whether the data can be changed, subkey, primary key, TTL, maximum limit for data reduction, maximum limit for data addition, current value.
 
-## Changelog
-
-### 0.2.0
-  - 🌟 Optimize API service, you can use it without configuring the back-end platform.
-  - 🌟 Refactor methods and attributes to make it easier to use.
-
-### 0.1.0
-  - 🌟 Support the like feature.
-  - 🌟 Support site, article page visits statistics.
-
 ## Contributors
 
 This project exists thanks to all the people who contribute.

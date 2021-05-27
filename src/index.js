@@ -4,16 +4,14 @@
  * Released under the MIT License.
  */
 ;(function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined'
-    ? (module.exports = factory())
-    : typeof define === 'function' && define.amd
-    ? define(factory)
-    : ((global = global || self), (global.Vilike = factory()));
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
+  typeof define === 'function' && define.amd ? define(factory) :
+  (global = global || self, global.Vilike = factory());
 })(this, function () {
   'use strict';
   const Vilike = {};
 
-  Vilike.version = '0.2.0';
+  Vilike.version = '0.2.1';
 
   const BASE_API_PATH = 'https://api.countapi.xyz';
 
