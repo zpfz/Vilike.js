@@ -55,7 +55,6 @@ Vilike.exec('github','vilike',1).then((result) => {
   value: 1
 }
 ```
-<br/>
 
 ## Advanced Usage 
 
@@ -157,9 +156,6 @@ Vilike.info('github.zpfz','vilike').then((result) => {
 }
 ```
 **NOTE:** The fields above are in order: creation time, whether the data can be changed, subkey, primary key, TTL, maximum limit for data reduction, maximum limit for data addition, current value.
-
-
-<br/>
 
 ## Changelog
 
