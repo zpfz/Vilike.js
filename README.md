@@ -1,4 +1,4 @@
-<h2 align="center">Vilike.js</h2>
+<h1 align="center">Vilike.js</h1>
 
 <p align="center">A lightweight counts of visit and like plugin.</p>
 
