@@ -12,7 +12,6 @@
 </p>
 
 ## Installation
----
 
 Add `Vilike.js` to your project.
 
@@ -29,7 +28,7 @@ npm install --save vilike
 ```
 
 ## Basic usage
----
+
 ### Vilike.exec(pkey, skey, mode)  
 
 Get the returned data through pkey and skey, the initial value is 1. Each time this method is executed, the data on the CountAPI server will automatically increase by one.  
@@ -59,7 +58,7 @@ Vilike.exec('github','vilike',1).then((result) => {
 <br/>
 
 ## Advanced Usage 
----
+
 ### Vilike.create(pkey, skey, value, ctrl, upperbound)  
 Used to create custom data, including key value, data controllability, and data additivity.
 
@@ -163,7 +162,7 @@ Vilike.info('github.zpfz','vilike').then((result) => {
 <br/>
 
 ## Changelog
----
+
 ### 0.2.0
   - 🌟 Optimize API service, you can use it without configuring the back-end platform.
   - 🌟 Refactor methods and attributes to make it easier to use.
@@ -173,12 +172,12 @@ Vilike.info('github.zpfz','vilike').then((result) => {
   - 🌟 Support site, article page visits statistics.
 
 ## Contributors
----
+
 This project exists thanks to all the people who contribute.
 
 ![Feng L.H.](https://avatars2.githubusercontent.com/u/49757965?s=60&v=4)
 
 
 ## License
----
+
 RVerify © 2020-present, Feng L.H. Released under the [MIT License](https://mit-license.org/).
