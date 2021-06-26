@@ -5,7 +5,9 @@ const uglify = require('gulp-uglify');
 const del = require('del');
 const connect = require('gulp-connect');
 const gutil = require('gulp-util');
-const babel = require('gulp-babel');
+const webpackStream = require("webpack-stream");
+const webpackConfig = require ("./webpack.config.js");
+
 // const version = require('./package.json').version;
 
 const jsPath = './src/index.js';
@@ -27,11 +29,7 @@ gulp.task('clean', async () => {
 gulp.task('js:build', async () => {
   await gulp
     .src(jsPath)
-    // .pipe(
-    //   babel({
-    //     presets: ['es2015']
-    //   })
-    // )
+    .pipe(webpackStream(webpackConfig))
     .pipe(rename('Vilike.js'))
     .pipe(gulp.dest('./dist/'))
     .pipe(uglify())
@@ -54,22 +52,35 @@ gulp.task('html:dev', async () => {
 });
 
 gulp.task('js:dev', async () => {
-  await gulp.src('./src/index.js').pipe(gulp.dest('./test/')).pipe(connect.reload());
+  await gulp
+    .src(jsPath)
+    .pipe(webpackStream(webpackConfig))
+    .pipe(rename('index.js'))
+    .pipe(uglify())
+    .on('error', function(err) {
+      gutil.log(gutil.colors.red('[Error]'), err.toString());
+    })
+    .pipe(gulp.dest('./test/'))
+    .pipe(connect.reload());
 });
+
 gulp.task('js:copy', async () => {
-  await gulp.src('./src/index.js')
-    .pipe(
-      babel({
-        presets: ['es2015']
-      })
-    )
-    .pipe(gulp.dest('./test/'));
+  await gulp
+    .src(jsPath)
+    .pipe(webpackStream(webpackConfig))
+    .pipe(rename('index.js'))
+    .pipe(uglify())
+    .on('error', function(err) {
+      gutil.log(gutil.colors.red('[Error]'), err.toString());
+    })
+    .pipe(gulp.dest('./test/'))
 });
 
 gulp.task('watch', () => {
   gulp.watch('./src/index.js', gulp.series('js:dev'));
   gulp.watch('./test/index.html', gulp.series('html:dev'));
 });
+
 
 gulp.task(
   'default',

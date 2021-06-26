@@ -1,17 +1,15 @@
 /*
  * Vilike.js
- * (c) 2020 Feng L.H.
+ * (c) 2021 Feng L.H.
  * Released under the MIT License.
- */
-;(function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
-  typeof define === 'function' && define.amd ? define(factory) :
-  (global = global || self, global.Vilike = factory());
-})(this, function () {
+*/
+
+  import fetch from 'cross-fetch';
+
   'use strict';
   const Vilike = {};
 
-  Vilike.version = '0.2.1';
+  Vilike.version = '0.3.0';
 
   const BASE_API_PATH = 'https://api.countapi.xyz';
 
@@ -193,26 +191,22 @@
    */
   function fetchJson(url) {
     return new Promise((resolve) => {
-      let xhr = new XMLHttpRequest();
-      xhr.responseType = 'json';
-
-      xhr.onload = () => {
-        switch (xhr.status) {
-          case 200:
-            resolve(xhr.response);
-            break;
-          default:
-            resolve({ status: xhr.status, res: xhr.response });
-        }
-      };
-      xhr.open('GET', url, true);
-      xhr.send(null);
+      fetch(url)
+        .then(res => {
+          return res.json();
+        })
+        .then(function(data) {
+          resolve(data);
+        })
+        .catch(err => {
+          console.error(err);
+        });
     });
   }
+
 
   if (typeof window !== 'undefined') {
     window.Vilike = Vilike;
   }
 
-  return Vilike;
-});
+export default Vilike;
