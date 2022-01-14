@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vilike.js Example</title>
+  <link rel="icon" href="https://vilikejs.pages.dev/assets/favicon.ico">
+  <!-- 1. Vilike JS -->
+  <script src="https://unpkg.com/vilike/dist/Vilike.min.js"></script>
+</head>
+
+<body style="text-align: center;">
+  <div>
+    <h1>Vilike.js Example</h1>
+  </div>
+  <!-- 2. Count Likes -->
+  <div>
+    <p>Basic usage of upvote is below</p>
+    <p>Tip : Please clean the {pkey, skey} in localStorage if you wanna more likes.</p>
+    <div style="margin-bottom: 100px;">
+      <button type="button" onclick="countLike();" style="font-size: larger;">
+        <i class="fas fa-thumbs-up text-danger"></i>
+        Likes :
+        <span id="likeNumber"></span>
+      </button>
+      <p id="clickedLike" style="margin-top: 15px; color: red;"></p>
+    </div>
+  </div>
+  <!-- 3. Vilike JS -->
+  <script>
+    var pkey = 'vilike.js'
+    var skey = 'demo'
+    el = document.getElementById("likeNumber")
+    el2 = document.getElementById("clickedLike")
+    // init likeNumber
+    Vilike.info(pkey, skey).then((result) => {
+      el.innerHTML = result.value
+    });
+    // update likeNumber
+    function countLike() {
+      if (skey != localStorage.getItem(pkey)) {
+        Vilike.exec(pkey, skey, 1).then((result) => {
+          if (true == result.isHit) {
+            el.innerHTML = result.value
+          }
+        });
+      } else {
+        alert("You've already clicked on it !", "warning")
+      }
+    }
+    // warning
+    function alert(message, type) {
+      var wrapper = document.createElement('div')
+      wrapper.innerHTML = '<span>' + message + '</span>'
+      el2.append(wrapper)
+    }
+  </script>
+</body>
+
+</html>
