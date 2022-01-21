@@ -157,8 +157,8 @@ Vilike.info('github.zpfz','vilike').then((result) => {
 ```
 **NOTE:** The fields above are in order: creation time, whether the data can be changed, subkey, primary key, TTL, maximum limit for data reduction, maximum limit for data addition, current value.
 
-## Examples
-* [How to count likes on the page](https://goog.tech/Vilike.js/example/upvote.html)
+## Try Online
+* [Vilike.js Demo](https://goog.tech/Vilike.js/example/upvote.html)
 
 ## Contributors
 
